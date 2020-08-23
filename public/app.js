@@ -30,9 +30,16 @@ function delList(e){
     // console.log(e.getAttribute)
 }
 
+// function updateList(a){
+//     var target = a.parentNode.firstChild
+//     var inp = prompt("Enter the updated value",target.nodeValue)
+//     target.nodeValue=inp
+
+// }
 function updateList(a){
     var target = a.parentNode.firstChild
-    var inp = prompt("Enter the updated value",target.nodeValue)
-    target.nodeValue=inp
+    var inp = document.createElement("input")
+    // target.nodeValue.appendChild(inp)
+    target.nodeValue=inp.innerHTML
 
 }
