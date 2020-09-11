@@ -8,8 +8,10 @@ function addBtn(){
 
     var delbtn = document.createElement("button")
     var delbtnText = document.createTextNode("delete")
+    
     delbtn.appendChild(delbtnText) 
     listElement.appendChild(delbtn)
+
     delbtn.setAttribute("onclick","delList(this)")
 
     var updBtn = document.createElement("button")
@@ -19,20 +21,28 @@ function addBtn(){
     updBtn.setAttribute("onclick","updateList(this)")   
     todoList.appendChild(listElement)
 
+    var key = firebase.database().ref("Activity").push().key
     
-    firebase.database().ref("Acvtivity").set(getInput.value)
+    firebase.database().ref("Activity/" + key).set(getInput.value)
+
+
+    delbtn.setAttribute("id",key)
 
     getInput.value = ""
 
  
 
-
+    //console.log(delbtn.getAttribute("id"))
 }
 
 
 function delList(e){
     e.parentNode.remove()
-    // console.log(e.getAttribute)
+
+
+
+    firebase.database().ref("Activity/" + e.getAttribute("id")).remove()
+    console.log(e.getAttribute("id"))
 }
 
 // function updateList(a){
