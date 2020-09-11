@@ -27,6 +27,7 @@ function addBtn(){
 
 
     delbtn.setAttribute("id",key)
+    updBtn.setAttribute("id",key)
 
     getInput.value = ""
 
@@ -52,9 +53,11 @@ function delList(e){
 
 // }
 function updateList(a){
-    var target = a.parentNode.firstChild
-    var inp = document.createElement("input")
+    var target = a.parentNode
+    var edit = prompt("Enter the updtaed value") 
+    //var inp = document.createElement("input")
     // target.nodeValue.appendChild(inp)
-    target.nodeValue=inp.innerHTML
-
+    // target.nodeValue=inp.innerHTML
+    target.firstChild.nodeValue = edit
+    firebase.database().ref("Activity/" + a.id).set(edit)
 }
