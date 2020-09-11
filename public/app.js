@@ -19,8 +19,13 @@ function addBtn(){
     updBtn.setAttribute("onclick","updateList(this)")   
     todoList.appendChild(listElement)
 
+    
+    firebase.database().ref("Acvtivity").set(getInput.value)
 
     getInput.value = ""
+
+ 
+
 
 }
 
